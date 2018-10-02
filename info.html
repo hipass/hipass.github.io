@@ -9,8 +9,21 @@
     <meta name="description" content="ガールズ&パンツァー,Actas Inc.製作的原創動畫" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
-    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" /></head>
-  
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+	  <style type="text/css">
+	#sssss {
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+  height: 280px;
+/*  background-color:#000;*/
+}
+
+#sssss section {
+  height: 100%;
+  width: 100%;
+}
+  </style>
+	</head>
   <body>
     <!--header-->
     <div class="header-top">
@@ -42,7 +55,7 @@
             <div class="panel-heading">Personal Info</div>
             <div class="panel-body">
               <img src="images/darjeeling_u_2.jpg" class="img-responsive img-rounded img-thumbnail center-block" alt="Me">
-              <p class="text-center text-primary">Darjeeling.Air</p>
+              <p class="text-center text-primary">Darjeeling</p>
               <address class="text-center">
                 <span class="glyphicon glyphicon-home" title="Country">
                   <kbd>China</kbd></span>
@@ -63,19 +76,37 @@
               </div>
               <div class="row">
                 <div class="col-sm-9">
-                  <span class="text-success">Rail-Gun</span></div>
+                  <span class="text-success">Tank</span></div>
                 <div class="col-sm-12">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-success" style="width: 99%"></div>
+                    <div class="progress-bar progress-bar-success" style="width: 90%"></div>
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-sm-9">
-                  <span class="text-info">Shotgun</span></div>
+                  <span class="text-info">Spaceship</span></div>
                 <div class="col-sm-12">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-info" style="width: 99%"></div>
+                    <div class="progress-bar progress-bar-danger" style="width: 90%"></div>
+                  </div>
+                </div>
+              </div>
+			  <div class="row">
+                <div class="col-sm-9">
+                  <span class="text-info">Fighter plane</span></div>
+                <div class="col-sm-12">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-info" style="width: 90%"></div>
+                  </div>
+                </div>
+              </div>
+			  <div class="row">
+                <div class="col-sm-9">
+                  <span class="text-info">RPG</span></div>
+                <div class="col-sm-12">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-success" style="width: 90%"></div>
                   </div>
                 </div>
               </div>
@@ -84,7 +115,7 @@
                   <span class="text-warning">Automatic Rifle</span></div>
                 <div class="col-sm-12">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-warning" style="width: 99%"></div>
+                    <div class="progress-bar progress-bar-warning" style="width: 90%"></div>
                   </div>
                 </div>
               </div>
@@ -93,7 +124,7 @@
                   <span class="text-danger">Desert Eagle</span></div>
                 <div class="col-sm-12">
                   <div class="progress">
-                    <div class="progress-bar progress-bar-danger" style="width: 99%"></div>
+                    <div class="progress-bar progress-bar-danger" style="width: 90%"></div>
                   </div>
                 </div>
               </div>
@@ -105,11 +136,10 @@
           <div class="panel-group" id="accoradion">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <blockquote>
-                  <p>嗡嗡嗡嗡嗡嗡嗡嗡....軋軋軋軋軋軋軋....</p>
-                  <footer>Darjeeling
-                    <cite title="Source Title">Air</cite></footer>
-                </blockquote>
+				<script type="text/javascript" src="js/zingchart.min.js"></script>
+				<div id="sssss">
+  <section id="chartOne"></section>
+</div>
               </div>
             </div>
           </div>
@@ -137,11 +167,11 @@
                     <ul class="list-group">
                       <li class="list-group-item list-group-item-success">
                         <div class="row">
-                          <div class="col-sm-4">Handsome is as handsome does.</div></div>
+                          <div class="col-sm-6">Handsome is as handsome does.</div></div>
                       </li>
                       <li class="list-group-item list-group-item-success">
                         <div class="row">
-                          <div class="col-sm-4">行いの美しい者は姿も麗しい。</div></div>
+                          <div class="col-sm-6">行いの美しい者は姿も麗しい。</div></div>
                       </li>
                       <li class="list-group-item list-group-item-success">
                         <div class="row">
@@ -156,6 +186,95 @@
         </div>
       </div>
     </div>
-  </body>
 
+<script type="text/javascript">
+/* Colors */
+var white = '#000';
+var transparent = 'transparent';
+//var lightBlue = '#53688B';
+var lightPink = '#337ab7';
+var lightGreen = '#82EBC1';
+
+/* Chart One */
+var chartOneData = {
+  type: 'radar',
+  globals: {
+    fontFamily: 'Nunito', 
+  },
+  backgroundColor: transparent,
+//  title: {
+//    align: 'left',
+//    text: 'CATEGORIES',
+//    fontColor: white
+//  },
+  legend: {
+    backgroundColor: transparent,
+    borderWidth: 0,
+    marker: {
+      type: 'circle',
+      borderWidth: 0
+    },
+    x: '16px',
+    y: '48px'
+  },
+  plot: {
+    aspect: 'area',
+    alphaArea: '.6',
+  },
+  scaleK: {
+    //labels: ['Intencity', 'Flawour', 'Chill', 'Excitement', 'Good Mood', 'Anxiety', 'Hunger', 'Lasting', 'Effect'],
+	labels: ['重量', '全長', '全幅', '全高', '最高速度','航続距離','主炮','副武器','裝甲'],
+    item: {
+      fontColor: white
+    },
+    guide: {
+      lineStyle: 'solid',
+      lineColor: white,
+      backgroundColor: transparent,
+    },
+    tick: {
+        lineColor: white
+    }
+  },
+  scaleV: {
+    item: {
+      visible: false
+    },
+    guide: {
+      lineStyle: 'solid',
+      lineColor: white,
+      backgroundColor: transparent
+    }
+  },
+  series: [
+//    {
+//	 //values: [40.64, 7.44, 2.74, 3.25, 20.12 ,193 ,37.5 ,7.92 ,19.05],
+//      backgroundColor: lightBlue, 
+//      lineColor: lightBlue,
+//      text: 'Mk.VII',
+//      legendItem: {
+//        fontColor: lightBlue
+//      }
+//    },
+    {
+	  values: [40.64, 7.44, 2.74, 3.25, 20.12, 193, 37.5, 7.92, 19.05],
+	  //values: [19.05, 7.92, 37.5, 193, 20.12 ,3.25 ,2.74 ,7.44 ,40.64],
+      backgroundColor: lightPink,
+      lineColor: lightPink,
+      text: 'Mk.VII',
+      legendItem: {
+        fontColor: lightPink
+      }
+    }
+  ]
+}
+
+zingchart.render({ 
+	id : 'chartOne', 
+	data : chartOneData, 
+	height: '100%', 
+	width: '100%' 
+});
+</script>
+  </body>
 </html>
