@@ -11,11 +11,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <style type="text/css">
-	#sssss {
-  height: 280px;
+#chartOne-menu,#chartTwo-menu{
+display:none !important;
 }
-#sssss section {
-  height: 100%;
+#sssss .row .col-md-6 section {
+  height: 275px;
   width: 100%;
 }
   </style>
@@ -50,10 +50,8 @@
               <img src="images/darjeeling_u_2.jpg" class="img-responsive img-rounded img-thumbnail center-block" alt="Me">
               <p class="text-center text-primary">Darjeeling</p>
               <address class="text-center">
-                <span class="glyphicon glyphicon-home" title="Country">
-                  <kbd>China</kbd></span>
-		      <span class="glyphicon glyphicon-email" title="Country">
-                  <kbd>admin@darjeelingair.com</kbd></span>
+                <span class="glyphicon glyphicon-home text-danger" title="Country">China</span><br>
+		      <span class="glyphicon glyphicon-envelope text-warning" title="Email">admin@darjeelingair.com</span>
               </address>
             </div>
           </div>
@@ -133,7 +131,10 @@
               <div class="panel-heading">
 				<script type="text/javascript" src="js/zingchart.min.js"></script>
 				<div id="sssss">
-  <section id="chartOne"></section>
+  <div class="row">
+  <div class="col-md-6"><section id="chartOne"></section></div>
+  <div class="col-md-6"><section id="chartTwo"></section></div>
+  </div>
 </div>
               </div>
             </div>
@@ -203,8 +204,8 @@
 /* Colors */
 var white = '#000';
 var transparent = 'transparent';
-//var lightBlue = '#53688B';
-var lightPink = '#337ab7';
+var lightBlue = '#53688B';
+var lightPink = '#C3A9C6';
 var lightGreen = '#82EBC1';
 
 /* Chart One */
@@ -214,11 +215,11 @@ var chartOneData = {
     fontFamily: 'Nunito', 
   },
   backgroundColor: transparent,
-//  title: {
-//    align: 'left',
-//    text: 'CATEGORIES',
-//    fontColor: white
-//  },
+  title: {
+    align: 'left',
+    text: 'Mk.VII',
+    fontColor: white
+  },
   legend: {
     backgroundColor: transparent,
     borderWidth: 0,
@@ -234,8 +235,7 @@ var chartOneData = {
     alphaArea: '.6',
   },
   scaleK: {
-    //labels: ['Intencity', 'Flawour', 'Chill', 'Excitement', 'Good Mood', 'Anxiety', 'Hunger', 'Lasting', 'Effect'],
-	labels: ['重量', '全長', '全幅', '全高', '最高速度','航続距離','主炮','副武器','裝甲'],
+    labels: ['重量', '全長', '全幅', '全高', '最高速度','航続距離','主炮','副武器','裝甲'],
     item: {
       fontColor: white
     },
@@ -259,21 +259,21 @@ var chartOneData = {
     }
   },
   series: [
-//    {
-//	 //values: [40.64, 7.44, 2.74, 3.25, 20.12 ,193 ,37.5 ,7.92 ,19.05],
-//      backgroundColor: lightBlue, 
-//      lineColor: lightBlue,
-//      text: 'Mk.VII',
-//      legendItem: {
-//        fontColor: lightBlue
-//      }
-//    },
     {
-	  values: [40.64, 7.44, 2.74, 3.25, 20.12, 193, 37.5, 7.92, 19.05],
-	  //values: [19.05, 7.92, 37.5, 193, 20.12 ,3.25 ,2.74 ,7.44 ,40.64],
+      values: [40.64, 7.44, 2.74, 3.25, 20.12 ,193 ,37.5 ,7.92 ,19.05],
+      backgroundColor: lightBlue, 
+      lineColor: lightBlue,
+      text: 'Type 1',
+      legendItem: {
+        fontColor: lightBlue
+      }
+    },
+    {
+      values: [40.64, 7.44, 2.74, 3.25, 20.12 ,193 ,37.5 ,7.92 ,19.05],
+      //values: [193, 40.64, 37.5, 20.12, 19.05, 7.92, 7.44, 3.25, 2.74],
       backgroundColor: lightPink,
       lineColor: lightPink,
-      text: 'Mk.VII',
+      text: 'Type 2',
       legendItem: {
         fontColor: lightPink
       }
@@ -284,6 +284,100 @@ var chartOneData = {
 zingchart.render({ 
 	id : 'chartOne', 
 	data : chartOneData, 
+	height: '100%', 
+	width: '100%' 
+});
+
+/* Chart Two */
+var chartTwoData = {
+  type: 'radar',
+  globals: {
+    fontFamily: 'Nunito', 
+  },
+  backgroundColor: transparent,
+  title: {
+    align: 'left',
+    text: 'Mk.III／IV',
+    fontColor: white
+  },
+  legend: {
+    backgroundColor: transparent,
+    borderWidth: 0,
+    marker: {
+      type: 'circle',
+      borderWidth: 0
+    },
+    x: '16px',
+    y: '48px'
+  },
+  plot: {
+    aspect: 'area',
+    alphaArea: '.6',
+  },
+  scaleK: {
+    labels: ['重量', '全長', '全幅', '全高', '最高速度','航続距離','主炮','副武器','裝甲'],
+    item: {
+      fontColor: white,
+      rules: [
+        {
+        rule: '%i == 0 || %i == 2 || %i == 4 || %i == 7',
+        fontColor: lightPink
+      }
+      ]
+    },
+    guide: {
+      lineStyle: 'solid',
+      lineColor: white,
+      backgroundColor: transparent,
+    },
+    tick: {
+        lineColor: white
+    }
+  },
+  scaleV: {
+    item: {
+      visible: false
+    },
+    guide: {
+      lineStyle: 'solid',
+      lineColor: white,
+      backgroundColor: transparent
+    }
+  },
+  series: [
+    {
+      values: [27.0, 5.61, 2.59, 2.52, 24.1, 257, 50, 7.92, 13],
+      backgroundColor: lightBlue, 
+      lineColor: lightBlue,
+      text: 'Type 1',
+      legendItem: {
+        fontColor: lightBlue
+      }
+    },
+    {
+      values: [27.0, 5.61, 2.59, 2.52, 24.1, 257, 50, 7.92, 13],
+      backgroundColor: lightPink,
+      lineColor: lightPink,
+      text: 'Type 2',
+      legendItem: {
+        fontColor: lightPink
+      },
+      valueBox: {
+        backgroundColor: '#252D47',
+        fontColor: 'white',
+        padding: '2px 8px',
+        borderRadius: '8px',
+        borderWidth: '2px',
+        borderColor: lightPink,
+        shadow: false
+      }
+    }
+  ]
+}
+
+zingchart.render({ 
+	id : 'chartTwo', 
+	data : chartTwoData, 
 	height: '100%', 
 	width: '100%' 
 });
